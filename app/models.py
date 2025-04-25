@@ -46,5 +46,14 @@ class Employee(Model):
     begin_date = Column(Date, default=today, nullable=False)
     end_date = Column(Date, nullable=True)
 
+class Transaction(Model):
+    id = Column(Integer, primary_key=True)
+    amount = Column(Integer, nullable=False)
+    timestamp = Column(Date, default=today)
+    description = Column(String(150), nullable=True)
+
+    def __repr__(self):
+        return f"{self.amount} @ {self.timestamp}"
+
     def __repr__(self):
         return self.full_name
